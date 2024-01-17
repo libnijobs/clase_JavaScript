@@ -1,5 +1,14 @@
 let estacionamiento = []
 let autoNuevo
+//////////////////////// esto es una funcion constructora que esta destinada a crear objetos ///////////////////////////////
+
+/*La función toma tres parámetros (marca, modelo y annio).
+
+Dentro de la función, this se refiere al objeto que se creará cuando se invoque la función con new.
+
+Se están asignando propiedades (marca, modelo y annio) al objeto usando this.
+
+Cuando utilizas esta función con new, se crea un nuevo objeto con las propiedades especificadas:*/
 
 function auto(marca, modelo, annio){
     this.marca = marca;
