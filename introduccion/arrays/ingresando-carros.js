@@ -13,9 +13,9 @@ while (user === "si") {
   let modelo = prompt("Ingresa el modelo:")
   let anio = prompt("Ingresa el año:")
 
-  let auto = new Auto(marca, modelo, anio)
+  autos.push(new Auto(marca, modelo, anio))
 
-  autos.push(auto)
+  // autos.push(auto)
 
   user = prompt("Si quieres continuar pulsa 'si', de lo contrario pulsa 'no':")
 }
