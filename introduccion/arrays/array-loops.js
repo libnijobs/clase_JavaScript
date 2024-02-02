@@ -24,6 +24,20 @@ for (let i = 0; i < materiales.length; i++) {
 
 ////////////////////////// for /////////////////////////////////////
 
+const cursoJS = [
+  "Intro a JS",
+  "Fundamentos de JS",
+  "Manipulación del DOM",
+  "Eventos en JavaScript",
+]
+
+for (let i = cursoJS.length -1; i >= 0; i--) {
+  console.log(`${i + 1}. ${cursoJS[i]}`);
+  
+}
+
+////////////////////////// for /////////////////////////////////////
+
 const materialesCostruccion = ['pala', 'cemento', 'martillo'];
 
 function mostrarMaterialesCostruccion(material){
