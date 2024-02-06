@@ -1,9 +1,6 @@
 function isPar(array){
     return array.length % 2
 }
-array.forEach(element => {
-    
-});
 
 calculandoMedia([10,100,8,50,12,1,2,55])
 

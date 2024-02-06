@@ -1,5 +1,16 @@
 const salarios = [];
 salarios.push({
+  name: 'Zuri',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 400, },
+    { year: 2019, empresa: 'Freelance', salario: 500, },
+    { year: 2020, empresa: 'Freelance', salario: 500, },
+    { year: 2021, empresa: 'Mokepon', salario: 1100, },
+    { year: 2022, empresa: 'Mokepon', salario: 1100, },
+    { year: 2023, empresa: 'Mokepon', salario: 1200, },
+  ],
+});
+salarios.push({
   name: 'Juanita',
   trabajos: [
     { year: 2018, empresa: 'Freelance', salario: 250, },
@@ -78,17 +89,6 @@ salarios.push({
   ],
 });
 salarios.push({
-  name: 'Zamir',
-  trabajos: [
-    { year: 2018, empresa: 'Freelance', salario: 400, },
-    { year: 2019, empresa: 'Freelance', salario: 500, },
-    { year: 2020, empresa: 'Freelance', salario: 500, },
-    { year: 2021, empresa: 'Mokepon', salario: 1100, },
-    { year: 2022, empresa: 'Mokepon', salario: 1100, },
-    { year: 2023, empresa: 'Mokepon', salario: 1200, },
-  ],
-});
-salarios.push({
   name: 'Daniela',
   trabajos: [
     { year: 2018, empresa: 'Freelance', salario: 500, },
@@ -109,7 +109,7 @@ salarios.push({
   ],
 });
 salarios.push({
-  name: 'Rigoberto',
+  name: 'Robert',
   trabajos: [
     { year: 2018, empresa: 'MarketerosCOL', salario: 700, },
     { year: 2019, empresa: 'MarketerosCOL', salario: 700, },
