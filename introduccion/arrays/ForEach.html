@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src=""></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const productos = [
+        { title: "burger", price: 50 },
+        { title: "pizza", price: 60 },
+        { title: "hot dog", price: 35 },
+        { title: "frites", price: 25 },
+        { title: "chaguarma", price: 20 },
+        { title: "helado", price: 10 },
+      ];
+
+      const app = document.getElementById("app");
+      productos.forEach((productos) => {
+        app.innerHTML += `<li>${productos.title} - $${productos.price}</li>`;
+        console.log(productos.price);
+      });
+
+      function suma(productos) {
+        return productos.reduce((a, b) => a + b.price, 0);
+      }
+
+      console.log("la suma es: ", suma(productos));
+    </script>
+  </body>
+</html>
