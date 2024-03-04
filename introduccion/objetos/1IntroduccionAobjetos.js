@@ -207,7 +207,7 @@ let admin = persona; // copiamos el objeto a la  variable admin
 
 admin.name = 'Pete'; // cambiado por la referencia "admin"
 
-alert(persona.name); // 'Pete', los cambios se ven desde la referencia "user"
+console.log(persona.name); // 'Pete', los cambios se ven desde la referencia "user"
 
 //Podemos usar cualquiera de las variables para acceder al objeto y modificar su contenido:
 // Es como si tuviéramos un gabinete con dos llaves y usáramos una de ellas (admin) para acceder a él y hacer cambios.
@@ -231,7 +231,7 @@ for (let key in userPersona) {
 // ahora clone es un objeto totalmente independiente con el mismo contenido
 clone.name = "Pete"; // cambiamos datos en él
 
-alert( userPersona.name ); // John aún está en el objeto original
+console.log( userPersona.name ); // John aún está en el objeto original
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -244,9 +244,9 @@ let permissions2 = { canEdit: true };
 Object.assign(userObjeto, permissions1, permissions2);
 
 // ahora es user = { name: "John", canView: true, canEdit: true }
-alert(userObjeto.name); // John
-alert(userObjeto.canView); // true
-alert(userObjeto.canEdit); // true
+console.log(userObjeto.name); // John
+console.log(userObjeto.canView); // true
+console.log(userObjeto.canEdit); // true
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -258,5 +258,31 @@ let info = {
 
 let clone = Object.assign({}, info);
 
-alert(clone.name); // John
-alert(clone.age); // 30
+console.log(clone.name); // John
+console.log(clone.age); // 30
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Clonación anidada
+// Hasta ahora supusimos que todas las propiedades de user eran primitivas. Pero las propiedades pueden ser referencias a otros objetos.
+
+// Para clonar profundamente un objeto sin editar las propiedades del objeto principal ni los objetos anidados usa structuredClone(object)
+
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+let clone = structuredClone(user);
+
+clone.sizes.height = 100;
+console.log( clone.sizes.height ); // 100
+
+console.log( user.sizes.height ); // 182
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
