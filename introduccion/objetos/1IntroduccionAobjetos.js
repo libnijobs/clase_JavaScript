@@ -286,3 +286,104 @@ console.log( user.sizes.height ); // 182
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Métodos de objeto, "this"
+
+// Los objetos son creados usualmente para representar entidades del mundo real, como usuarios, órdenes, etc.:
+// Y en el mundo real un usuario puede actuar: seleccionar algo del carrito de compras, hacer login, logout, etc.
+
+// Estas acciones se implementan asignando funciones a las propiedades del objeto.
+
+let user = {
+  // ...
+};
+
+// primero, declara
+function sayHi() {
+  console.log("¡Hola!");
+};
+
+// entonces la agrega como un método
+user.sayHi = sayHi;
+
+user.sayHi(); // ¡Hola!
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Formas abreviadas para los métodos
+// Existe una sintaxis más corta para los métodos en objetos literales:
+
+// estos objetos hacen lo mismo
+
+userr = {
+  sayHi: function() {
+    console.log("Hello1");
+  }
+};
+userr.sayHi()
+
+// la forma abreviada se ve mejor, ¿verdad?
+userrs = {
+  sayHi() {   // igual que "sayHi: function(){...}"
+    console.log("Hello2");
+  }
+};
+
+userrs.sayHi()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// “this” en métodos
+// Es común que un método de objeto necesite acceder a la información almacenada en el objeto para cumplir su tarea.
+
+// Por ejemplo, el código dentro de user.sayHi() puede necesitar el nombre del usuario user.
+
+// Para acceder al objeto, un método puede usar la palabra clave this.
+
+// El valor de this es el objeto “antes del punto”, el usado para llamar al método.
+
+let userobj = {
+  name: "John",
+  age: 30,
+  sayHi() {
+    // "this" es el "objeto actual"
+    console.log(this.name);
+  }
+};
+
+userobj.sayHi(); // John
+
+// Técnicamente, también es posible acceder al objeto sin this, haciendo referencia a él por medio de la variable externa:
+// alert(user.name); // "user" en vez de "this" …Pero tal código no es confiable. Si decidimos copiar user a otra variable, 
+// por ejemplo admin = user y sobrescribir user con otra cosa, entonces accederá al objeto incorrecto.
+
+let objusers = {
+  name: "John",
+  sayHi() {
+    console.log(objusers.name);
+  }
+};
+
+let admin = objusers;
+objusers = null;   // sobrescribimos para hacer las cosas evidentes
+
+admin.sayHi();   // TypeError: No se puede leer la propiedad 'name' de null
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+function sayHi() {
+  alert( this.name );
+}
+
+// usa la misma función en dos objetos
+user.f = sayHi;
+admin.f = sayHi;
+
+// estos llamados tienen diferente "this"
+// "this" dentro de la función es el objeto "antes del punto"
+user.f(); // John  (this == user)
+admin.f(); // Admin  (this == admin)
+
+admin['f'](); // Admin (punto o corchetes para acceder al método, no importa)
