@@ -145,3 +145,17 @@ function ingresarDatos(nombre = 'pedro', annio = 50){
 }
 
 console.log(ingresarDatos('maria', 20));
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Escribe una función checkSpam(str) que devuelva true si str contiene ‘viagra’ o ‘XXX’, de lo contrario false.
+
+function checkSpam(str) {
+  let lowerStr = str.toLowerCase();
+
+  return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+}
+
+console.log( checkSpam('compra ViAgRA ahora') );
+console.log( checkSpam('xxxxx gratis') );
+console.log( checkSpam("coneja inocente") );

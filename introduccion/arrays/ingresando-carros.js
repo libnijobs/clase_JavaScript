@@ -9,11 +9,11 @@ let user = "si"
 
 while (user === "si") {
 
-  let marca = prompt("Ingresa la marca:")
-  let modelo = prompt("Ingresa el modelo:")
-  let anio = prompt("Ingresa el año:")
+  let marcas = prompt("Ingresa la marca:")
+  let modelos = prompt("Ingresa el modelo:")
+  let años = prompt("Ingresa el año:")
 
-  autos.push(new Auto(marca, modelo, anio))
+  autos.push(new Auto(marcas, modelos, años))
 
   // autos.push(auto)
 

@@ -157,7 +157,7 @@ for (let key in salaries) {
   sum += salaries[key];
 }
 
-alert(sum); // 390
+console.log(sum); // 390
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -374,16 +374,113 @@ let user = { name: "John" };
 let admin = { name: "Admin" };
 
 function sayHi() {
-  alert( this.name );
+  console.log( this.name );
 }
 
 // usa la misma función en dos objetos
-user.f = sayHi;
-admin.f = sayHi;
+user.saludo = sayHi;
+admin.saludo = sayHi;// añadimos la unfion sayHi al objeto como: llave:saludo y valor: función llamada = sayHi 
 
 // estos llamados tienen diferente "this"
 // "this" dentro de la función es el objeto "antes del punto"
-user.f(); // John  (this == user)
-admin.f(); // Admin  (this == admin)
+user.saludo(); // John  (this == user)
+admin.saludo(); // Admin  (this == admin)
 
-admin['f'](); // Admin (punto o corchetes para acceder al método, no importa)
+admin['saludo'](); // Admin (punto o corchetes para acceder al método, no importa)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const coche = {
+  marca: "Toyota",
+  obtenerMarca: () => {
+    // ¡Cuidado! La función de flecha no tiene su propio "this".
+    // En este contexto, "this" se refiere al objeto global (window).
+    return this.marca;
+  }
+};
+
+console.log(coche.obtenerMarca()); // Imprimirá "undefined"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let calculator = {
+  sum(){
+    return this.num1 + this.sum2;
+  },
+  mul(){
+    return  this.num1 * this.sum2;
+  },
+  read() {
+    this.num1 = +prompt('a?');
+    this.sum2 = +prompt('b?');
+  }
+};
+
+calculator.read();
+console.log( calculator.sum() );
+console.log( calculator.mul() );
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ¿Cuál es la ventaja de usar Symbol("id") y no un string "id"?
+
+// los objetos pueden cambiar cualquier llave a string...
+
+
+let user = { // pertenece a otro código
+  name: "John"
+};
+
+let id = Symbol("id");
+
+user[id] = 1;
+
+console.log( user[id] ); // podemos accesar a la información utilizando el symbol como nombre de clave pero con corchetes
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Si queremos usar un Symbol en un objeto literal, debemos usar corchetes.
+
+let Id = Symbol("id");
+
+let user = {
+  name: "John",
+  [Id]: 1235 // no "id": 1235
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Los Symbols son omitidos en for…in
+// Las claves de Symbol no participan dentro de los ciclos for..in.
+
+
+let ID = Symbol("id");
+let user = {
+  name: "John",
+  age: 30,
+  [ID]: 123
+};
+
+for (let key in user) console.log(key); // nombre, edad (no aparecen symbols)
+
+// el acceso directo por medio de symbol funciona
+console.log( "Direct: " + user[ID] ); // Direct: 123
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Object.assign copia tanto las claves string como symbol:
+
+let IDS = Symbol("id");
+let user = {
+  [IDS]: 123
+};
+
+let clone = Object.assign({}, user);
+
+console.log( clone[IDS] ); // 123
+
+// No hay paradoja aquí. Es así por diseño. La idea es que cuando clonamos un objeto o cuando fusionamos objetos, 
+// generalmente queremos que se copien todas las claves (incluidos los Symbol como id).
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
